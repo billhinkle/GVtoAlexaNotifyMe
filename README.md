@@ -24,7 +24,7 @@ Meanwhile, create a Google Sheet to run this script.  You can either:
   * In the script editor: erase the sample code, and paste this ENTIRE script into the code window
   * In the left column, under the little down-arrow next to the script name, click Rename and rename the script  GVtoAlexaNotifyMe
   *  From the menu: File, Save
-  *  Close the code editor window, and then close the sheet window also.
+  *  Close the script editor window, and then close the sheet window also.
 
 From your Google Drive, or from Google Sheets, re-open the sheet (now named 'Google Voice to Alexa Notify Me') and
 when that sheet opens, a new menu item should appear: 'Google Voice to Alexa Notify Me'
