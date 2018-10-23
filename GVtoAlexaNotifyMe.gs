@@ -236,7 +236,7 @@ function gvAlexaNotifyMe() {
                   from = (tmp && tmp[1])? tmp[1] : "an Unknown Sender";
                   
                   if (tmp && (tmp[2] == tmp[3])) {  // if receiver == sender, this may be a command to this script
-                    var cmdText = rawText.match(/(?:#GVALEXA)\s+(\b\S+\b)\s*(.*)?/i);  // look for trigger word #GVALEXA and a non-falsey verb word
+                    var cmdText = rawText.match(/.*#GVALEXA\s*(\b\S+\b)\s*(.*)?/i);  // look for trigger word #GVALEXA and a non-falsey verb word
                     if (cmdText && cmdText[1]) {
                       aCommand = cmdText[1];
                       if (cmdText[2])
