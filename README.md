@@ -12,13 +12,19 @@ First: you must have a Google Voice number associated with your GMail account.
 To get this script running: find and install the Notify Me skill in the Alexa Skills store.  Once that's done, tell Alexa to 
 'open Notify Me'; she will acknowledge that and you will then receive an access code in your email associated with your Echo.
 
-Meanwhile, in Google Sheets at sheets.google.com, Start a new spreadsheet, +Blank (or Google Drive, New, Google Sheets)...
+Meanwhile, create a Google Sheet to run this script.  You can either:  
+>> Copy the entire sheet and script from this link:  
+   https://docs.google.com/spreadsheets/d/105Myd9gnLLLiuPEVb3r6l5R2Cjb8TF9rOk3kJKEeuGE/copy  
+   and then rename the sheet to Google Voice to Alexa Notify Me, close the sheet window.  
+ OR  
+>> Create the Sheet manually:
+* In Google Sheets at sheets.google.com, Start a new spreadsheet, +Blank (or Google Drive, New, Google Sheets)...
 * Title the new sheet: Google Voice to Alexa Notify Me
 * From the menu: Tools, Script Editor
 * In the script editor: erase the sample code, and paste this ENTIRE script into the code window
 * In the left column, under the little down-arrow next to the script name, click Rename and rename the script GVtoAlexaNotifyMe
-* From the menu: File, Save
-* Close the code editor window, and then close the sheet window also
+*  From the menu: File, Save
+*  Close the code editor window, and then close the sheet window also.
 
 From your Google Drive, or from Google Sheets, re-open the sheet (now named 'Google Voice to Alexa Notify Me') and
 when that sheet opens, a new menu item should appear: 'Google Voice to Alexa Notify Me'
