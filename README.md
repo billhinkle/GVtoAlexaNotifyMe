@@ -13,11 +13,11 @@ To get this script running: find and install the Notify Me skill in the Alexa Sk
 'open Notify Me'; she will acknowledge that and you will then receive an access code in your email associated with your Echo.
 
 Meanwhile, create a Google Sheet to run this script.  You can either:  
-Copy the entire sheet and script from this link:  
+- Copy the entire sheet and script from this link:  
    https://docs.google.com/spreadsheets/d/105Myd9gnLLLiuPEVb3r6l5R2Cjb8TF9rOk3kJKEeuGE/copy  
    and then rename the sheet to Google Voice to Alexa Notify Me, close the sheet window.  
  OR  
-Create the Sheet manually:
+- Create the Sheet manually:
 * In Google Sheets at sheets.google.com, Start a new spreadsheet, +Blank (or Google Drive, New, Google Sheets)...
 * Title the new sheet: Google Voice to Alexa Notify Me
 * From the menu: Tools, Script Editor
