@@ -28,8 +28,7 @@ when that sheet opens, a new menu item should appear: 'Google Voice to Alexa Not
     Something like:       amzn1.ask.account.AWHOLELOTOFGOBBLETYGOOK  
 * After pasting in the code, press Enter and you should get a message that 'Google Voice to Alexa Notify Me can now be started.'
 * Again click the 'Google Voice to Alexa Notify Me' menu item, then 'Start'.
-* You will probably then have to authorize the script to access your GMail and other activities.  Depending on your Google account
-* security settings, you may have to go through 'Advanced' settings to do so, since this script has not been audited by Google.
+* You will probably then have to authorize the script to access your GMail and other activities.  Depending on your Google account security settings, you may have to go through 'Advanced' settings to do so, since this script has not been audited by Google.
 * When the script does start, you should see an acknowledgment message and a short HELP message.
 
 The script should now be up and running, redirecting your Google Voice messages and voicemails to your Echo as notifications.
