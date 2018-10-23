@@ -13,25 +13,27 @@ To get this script running: find and install the Notify Me skill in the Alexa Sk
 'open Notify Me'; she will acknowledge that and you will then receive an access code in your email associated with your Echo.
 
 Meanwhile, in Google Sheets at sheets.google.com, Start a new spreadsheet, +Blank (or Google Drive, New, Google Sheets)...
- Title the new sheet: Google Voice to Alexa Notify Me
- From the menu: Tools, Script Editor
- In the script editor: erase the sample code, and paste this ENTIRE script into the code window
- In the left column, under the little down-arrow next to the script name, click Rename and rename the script GVtoAlexaNotifyMe
- From the menu: File, Save
- Close the code editor window, and then close the sheet window also
+* Title the new sheet: Google Voice to Alexa Notify Me
+* From the menu: Tools, Script Editor
+* In the script editor: erase the sample code, and paste this ENTIRE script into the code window
+* In the left column, under the little down-arrow next to the script name, click Rename and rename the script GVtoAlexaNotifyMe
+* From the menu: File, Save
+* Close the code editor window, and then close the sheet window also
+
 From your Google Drive, or from Google Sheets, re-open the sheet (now named 'Google Voice to Alexa Notify Me') and
 when that sheet opens, a new menu item should appear: 'Google Voice to Alexa Notify Me'
- Click that new menu item and then click 'Enter Notify Me access code'
- In the popup window, paste the (very long!) access code sent in the skill's email mentioned above.  Be careful when copying it,
- from the email message to your clipboard, to include JUST the access code, without any extra spaces or characters.
-    Something like:       amzn1.ask.account.AWHOLELOTOFGOBBLETYGOOK
- After pasting in the code, press Enter and you should get a message that 'Google Voice to Alexa Notify Me can now be started.'
- Again click the 'Google Voice to Alexa Notify Me' menu item, then 'Start'.
- You will probably then have to authorize the script to access your GMail and other activities.  Depending on your Google account
- security settings, you may have to go through 'Advanced' settings to do so, since this script has not been audited by Google.
- When the script does start, you should see an acknowledgment message and a short HELP message.
+* Click that new menu item and then click 'Enter Notify Me access code'
+* In the popup window, paste the (very long!) access code sent in the skill's email mentioned above.  Be careful when copying it,
+ from the email message to your clipboard, to include JUST the access code, without any extra spaces or characters.  
+    Something like:       amzn1.ask.account.AWHOLELOTOFGOBBLETYGOOK  
+* After pasting in the code, press Enter and you should get a message that 'Google Voice to Alexa Notify Me can now be started.'
+* Again click the 'Google Voice to Alexa Notify Me' menu item, then 'Start'.
+* You will probably then have to authorize the script to access your GMail and other activities.  Depending on your Google account
+* security settings, you may have to go through 'Advanced' settings to do so, since this script has not been audited by Google.
+* When the script does start, you should see an acknowledgment message and a short HELP message.
+
 The script should now be up and running, redirecting your Google Voice messages and voicemails to your Echo as notifications.
 
-Most script activity is logged directly to the sheet; you can delete any or all of those rows anytime.
-To entirely stop the script, open the sheet, click the 'Google Voice to Alexa Notify Me' menu item, then 'Stop'.
-You can suspend (OFF), resume (ON), and filter messages to those with a specific word (KEYWORD).  See the HELP message.
+Most script activity is logged directly to the sheet; you can delete any or all of those rows anytime.  
+To entirely stop the script, open the sheet, click the 'Google Voice to Alexa Notify Me' menu item, then 'Stop'.  
+You can suspend (OFF), resume (ON), and filter messages to those with a specific word (KEYWORD).  See the HELP message.  
