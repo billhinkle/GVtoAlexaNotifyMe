@@ -2,6 +2,7 @@
  inspired by and loosely based on 'Gmail to Twitter' @labnol / Amit Agarwal  
  by Bill Hinkle github: @billhinkle 35146997+billhinkle@users.noreply.github.com  
  ver 2018-10-22 added command verbs ON, OFF, KEYWORD, HELP  
+ ver 2018-12-19 improved pronunciation of SMS shortcodes as 'from' address
 
 About: This script works with the Amazon Alexa Notify Me skill to send your Google Voice texts and voice mails (all or some)
 to your Echo to be read by Alexa as notification.  She will announce the sender and (approximate) time of receipt.  Messages
