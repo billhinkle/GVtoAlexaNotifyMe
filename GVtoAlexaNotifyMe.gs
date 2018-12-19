@@ -3,6 +3,7 @@
 * inspired by and loosely based on 'Gmail to Twitter' @labnol / Amit Agarwal
 * by Bill Hinkle github: @billhinkle 35146997+billhinkle@users.noreply.github.com
 * ver 2018-10-22 added command verbs ON, OFF, KEYWORD, HELP
+* ver 2018-12-19 improved pronunciation of SMS shortcodes as 'from' address
 
 * About: This script works with the Amazon Alexa Notify Me skill to send your Google Voice texts and voice mails (all or some)
 * to your Echo to be read by Alexa as notification.  She will announce the sender and (approximate) time of receipt.  Messages
@@ -241,18 +242,19 @@ function gvAlexaNotifyMe() {
                                   .replace(/\r?\n/g,' ')
                                   .replace(/<?(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/\S*)?>?/ig,'[WEB LINK]');
 
-                  isMMS = !!rawText.match(/^MMS Received\s*$/);             
+                  isMMS = /^MMS Received\s*$/.test(rawText);             
 
                   // parse out the sender name and numbers
                   tmp = from.match(/^"?(.*?)(?: \(SMS\))?"?\s*<(\d+)\.(\d+)\..*>/);
                   from = (tmp && tmp[1])? tmp[1] : "an Unknown Sender";
-                  
-                  if (tmp && (tmp[2] == tmp[3])) {  // if receiver == sender, this may be a command to this script
+                  if (/^\d{5,6}$/.test(from))  // if sender is a short code, separate out the digits for better pronunciation
+                    from = from.substr(-6,from.length-4) + ' ' + from.substr(-4,2) + ' ' + from.substr(-2,2)
+                  else if (tmp && (tmp[2] == tmp[3])) {  // if receiver == sender, this may be a command to this script
                     var cmdText = rawText.match(/.*?#GVALEXA\s*(\b\S+\b)\s*(.*)?/i);  // look for trigger word #GVALEXA and a non-falsey verb word
                     if (cmdText && cmdText[1]) {
                       aCommand = cmdText[1];
                       if (cmdText[2])
-                        aCmdTail = cmdText[2];
+                        aCmdTail = cmdText[2];             
                     }
                   }
                 }
