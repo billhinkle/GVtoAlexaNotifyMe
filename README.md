@@ -7,7 +7,7 @@
 About: This script works with the Amazon Alexa Notify Me skill to send your Google Voice texts and voice mails (all or some)
 to your Echo to be read by Alexa as notification.  She will announce the sender and (approximate) time of receipt.  Messages
 may take up to a few minutes to appear at your Echo.  Google Voice text yourself #GVALEXA HELP to get help when the script is
-up and running.  This script uses the Notify Me Alexa skill by Thomptronics http://www.thomptronics.com/notify-me
+up and running.  This script uses the Notify Me Alexa skill by Thomptronics https://www.thomptronics.com/about/notify-me
 
 First: you must have a Google Voice number associated with your GMail account.
 To get this script running: find and install the Notify Me skill in the Alexa Skills store.  Once that's done, tell Alexa to 
