@@ -6,6 +6,7 @@
 * ver 2018-12-19 improved pronunciation of SMS shortcodes as 'from' address
 * ver 2023-01-10 tweaked recognition of GV message delimiting phrases to handle Google changes;
 *                removed deprecated .substr usage in favor of .substring
+* ver 2023-02-28 tweaked parsing of GV message From:/Subject: to account for new shortcode handling by GV
 
 * About: This script works with the Amazon Alexa Notify Me skill to send your Google Voice texts and voice mails (all or some)
 * to your Echo to be read by Alexa as notification.  She will announce the sender and (approximate) time of receipt.  Messages
@@ -219,6 +220,7 @@ function gvAlexaNotifyMe() {
           if ((nowMS - msg.getDate().getTime()) < (gvAlexaNotifyMeTriggerMinutes * 60000)) {
         
             var from = msg.getFrom();
+            var subject = msg.getSubject();
             var rawText = msg.getPlainBody();
 
             // Logger.log("Thread " + g + " message " + m + " from " + from +  " is " + rawText);
@@ -226,16 +228,17 @@ function gvAlexaNotifyMe() {
             // keep only text between the google voice link and "YOUR ACCOUNT"
             if (rawText) {
               var tmp;
-              var isVoiceMail = false,
+              var isNoReply = !!from.match(/voice\-noreply\@google\.com/),
+                  isVoiceMail = false,
                   isMMS = false;
               var aCommand = null,  // self-sent command verbs
                   aCmdTail = null;
 
               tmp = rawText.match(/<https:\/\/voice\.google\.com>\s*([\s|\S]*)[\s|\S]*?\bYOUR ACCOUNT\b/);
               if (tmp && tmp[1]) {
-                isVoiceMail = !!from.match(/voice\-noreply\@google\.com/); 
+                isVoiceMail = !!subject.match(/New voicemail/);
                 if (isVoiceMail) {
-                  from = msg.getSubject();  // expected form is 'New voicemail from *name* at *time*'
+                  from = subject;  // expected form is 'New voicemail from *name* at *time*' since actual From: is Google Voice
                   rawText = tmp[1].replace(/\r?\n\s*play message\s*\r?\n<?(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/\S*)?>?\r?\n?/i,'')
                                   .replace(/\r?\n/g,' ');
                 } else {  // must be a text message instead
@@ -246,6 +249,8 @@ function gvAlexaNotifyMe() {
 
                   isMMS = /^MMS Received\s*$/.test(rawText);             
 
+                  if (isNoReply) 
+                    from = subject.replace(/New text message from /,'');   // extract actual 'From' from Subject: if From: is Google Voice
                   // parse out the sender name and numbers
                   tmp = from.match(/^"?(.*?)(?: \(SMS\))?"?\s*<(\d+)\.(\d+)\..*>/);
                   from = (tmp && tmp[1])? tmp[1] : "an Unknown Sender";
