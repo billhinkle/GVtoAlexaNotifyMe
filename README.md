@@ -7,6 +7,8 @@
    address
  - ver 2023-01-10 tweaked recognition of GV message delimiting phrases 
    to handle Google changes; removed deprecated .substr usage in favor of .substring
+ - ver 2023-02-28 tweaked parsing of GV message From:/Subject: to account for
+   new shortcode handling by GV
 
 **About:** This script works with the Amazon Alexa Notify Me skill to send your Google Voice texts and voice mails (all or some)
 to your Echo to be read by Alexa as notification.  She will announce the sender and (approximate) time of receipt.  Messages
