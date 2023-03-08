@@ -7,6 +7,7 @@
 * ver 2023-01-10 tweaked recognition of GV message delimiting phrases to handle Google changes;
 *                removed deprecated .substr usage in favor of .substring
 * ver 2023-02-28 tweaked parsing of GV message From:/Subject: to account for new shortcode handling by GV
+* ver 2023-03-08 tweaked parsing of GV message From:/Subject: further
 
 * About: This script works with the Amazon Alexa Notify Me skill to send your Google Voice texts and voice mails (all or some)
 * to your Echo to be read by Alexa as notification.  She will announce the sender and (approximate) time of receipt.  Messages
@@ -249,10 +250,20 @@ function gvAlexaNotifyMe() {
 
                   isMMS = /^MMS Received\s*$/.test(rawText);             
 
-                  if (isNoReply) 
-                    from = subject.replace(/New text message from /,'');   // extract actual 'From' from Subject: if From: is Google Voice
-                  // parse out the sender name and numbers
-                  tmp = from.match(/^"?(.*?)(?: \(SMS\))?"?\s*<(\d+)\.(\d+)\..*>/);
+                  if (isNoReply) { // extract actual 'From' from Subject: if From: is Google Voice
+                    from = subject.trim().replace(/^New text message from\s/,'');
+                    // tmp[1] is From name if any, or shortcode if that's all there is
+                    tmp = from.match(/^(.*)(?:\s(?:\d{5,6}))$/);
+                    if (!tmp)
+                      tmp = from.match(/^(\d{5,6})$(?:)/)
+                    if (!tmp)
+                      tmp = from.match(/^(.*)(?:)(?:)$/)
+                  }
+                  else {
+                    // parse From for the sender name and numbers
+                    // tmp[1] is From name if any, tmp[2] is From number or shortcode, if any
+                    tmp = from.match(/^"?(.*?)(?: \(SMS\))?"?\s*<(?:\d+)\.(?:\d+)\..*>/);
+                  }
                   from = (tmp && tmp[1])? tmp[1] : "an Unknown Sender";
                   if (/^\d{5,6}$/.test(from))  // if sender is a short code, separate out the digits for better pronunciation
                     from = from.substring(0,2-(from.length % 2)) + ' ' + from.substring(2-(from.length % 2),4-(from.length % 2)) + ' ' + from.substring(4-(from.length % 2),6-(from.length % 2))
